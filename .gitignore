@@ -1,7 +1,7 @@
 venv
 ReportAllure
 ReportHtml
-*.xlsx
+Communicator.xlsx
 .pytest_cache
 Pipfile
 Pipfile.lock
