@@ -1,0 +1,7 @@
+venv
+ReportAllure
+ReportHtml
+*.xlsx
+.pytest_cache
+Pipfile
+Pipfile.lock
