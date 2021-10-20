@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+allure-python-commons = "*"
+pytest = "*"
+appium-python-client = "*"
+allure-pytest = "*"
+pytest-html-lee = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
