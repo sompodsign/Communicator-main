@@ -15,14 +15,15 @@ class WhatsAppPage(BasePage):
     def send_message(self):
         sleep(self.data.five_seconds)
         not_send = []
-        for i in range(1, len(phone)):
+        for i in range(len(phone)):
             self.click(self.locator.search)
             self.send_data(phone[i], self.locator.search_input)
             self.driver.hide_keyboard()
             try:
                 self.click(self.locator.chat_person)
-                self.send_data(whatsAppGroupMessage[0], self.locator.chat_message)
                 sleep(1)
+                self.send_data("An automated message from COMMUNICATOR.......", self.locator.chat_message)
+                # sleep(1)
                 self.click(self.locator.post_message)
                 print(i)
                 self.go_back()
@@ -33,30 +34,30 @@ class WhatsAppPage(BasePage):
                 not_send.append(i)
         print(not_send)
 
-    def send_group_message(self):
-        sleep(self.data.five_seconds)
-        for i in range(len(whatsAppGroup)):
-            self.click(self.locator.search)
-            self.send_data(whatsAppGroup[i], self.locator.search_input)
-            self.driver.hide_keyboard()
-            self.click(self.locator.chat_person)
-            self.send_data(whatsAppGroupMessage[i], self.locator.chat_message)
-            self.click(self.locator.post_message)
-            self.go_back()
+    # def send_group_message(self):
+    #     sleep(self.data.five_seconds)
+    #     for i in range(len(whatsAppGroup)):
+    #         self.click(self.locator.search)
+    #         self.send_data(whatsAppGroup[i], self.locator.search_input)
+    #         self.driver.hide_keyboard()
+    #         self.click(self.locator.chat_person)
+    #         self.send_data(whatsAppGroupMessage[i], self.locator.chat_message)
+    #         self.click(self.locator.post_message)
+    #         self.go_back()
 
-    def extract_group_contact(self):
-        sleep(self.data.five_seconds)
-        self.click(self.locator.search)
-        self.send_data(self.data.group_name, self.locator.search_input)
-        self.driver.hide_keyboard()
-        # self.click(self.locator.chat_person)
-        # self.click(self.locator.more_options)
-        # self.click(self.locator.group_info)
-        self.click(self.locator.group_info_direct)
-
-        val = self.get_attribute_value(self.data.text_attribute, self.locator.total_members)
-        total_members = val.split(' ')[0]
-        print(total_members)
+    # def extract_group_contact(self):
+    #     sleep(self.data.five_seconds)
+    #     self.click(self.locator.search)
+    #     self.send_data(self.data.group_name, self.locator.search_input)
+    #     self.driver.hide_keyboard()
+    #     # self.click(self.locator.chat_person)
+    #     # self.click(self.locator.more_options)
+    #     # self.click(self.locator.group_info)
+    #     self.click(self.locator.group_info_direct)
+    #
+    #     val = self.get_attribute_value(self.data.text_attribute, self.locator.total_members)
+    #     total_members = val.split(' ')[0]
+    #     print(total_members)
 
         # size = self.driver.get_window_size()
         # print(size)

@@ -11,6 +11,3 @@ class TestWhatsApp(BaseTest):
 
 # python3 -m unittest testcase.test_whatsapp_01_send_message
 # pytest Test/testcase/whatsapp/test_whatsapp_00_whatsapp_number_checker.py
-
-
-

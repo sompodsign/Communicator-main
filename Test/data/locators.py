@@ -50,7 +50,8 @@ class WhatsappPageLocator(object):
     select_multiple_chat_person = '//android.widget.TextView[@resource-id="com.whatsapp:id/conversations_row_contact_name"]'
     select_multiple_chat_person1 = '//android.widget.FrameLayout[@resource-id="com.whatsapp:id/contact_selector"]'
     # chat_message = '//android.widget.EditText[@resource-id="com.whatsapp:id/entry"]'
-    chat_message = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText'
+    chat_message = '//android.widget.EditText[@resource-id="com.whatsapp:id/entry"]'
+    # chat_message = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.FrameLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.EditText'
     post_message = '//android.widget.ImageButton[@resource-id="com.whatsapp:id/send"]'
     back = '//android.widget.ImageView[@resource-id="com.whatsapp:id/whatsapp_toolbar_home"]'
 

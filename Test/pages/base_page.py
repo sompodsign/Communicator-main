@@ -24,7 +24,7 @@ class BasePage(object):
     def send_data(self, data, locator):
         # self.driver.implicitly_wait(1)
         # sleep(1)
-        self.driver.find_element_by_xpath(locator).send_keys(data)
+        self.driver.find_element_by_xpath(locator).set_value(data)
 
     def is_element_displayed(self, locator):
         val = self.driver.find_element_by_xpath(locator).is_displayed()
