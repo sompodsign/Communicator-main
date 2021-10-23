@@ -20,9 +20,10 @@ class WhatsAppPage(BasePage):
 
     def read_excel_for_availability(self, file, sheet):
         df = read_excel_sheet_by_sheet_name_pandas_without_header(file, sheet)
-        df = df.loc[:, 0]
+        df = df.loc[1:, 0]
         phone_number = df.values.tolist()
         return phone_number
+
 
     def write_res_to_excel(self, file, sheet, data):
         df = read_excel_sheet_by_sheet_name_pandas_without_header(file, sheet)
@@ -78,8 +79,8 @@ class WhatsAppPage(BasePage):
         return available_phone_number
 
     def whatsapp_number_finder(self):
-        # phone_number = self.read_excel_for_availability(self.wdata.file_for_availability, self.wdata.sheet_for_availability) # local
-        phone_number = self.read_number_from_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1)  # gsheet
+        phone_number = self.read_excel_for_availability(self.wdata.file_for_availability, self.wdata.sheet_for_availability) # local
+        # phone_number = self.read_number_from_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1)  # gsheet
         # print(phone_number)
         result = ''
         for i in range(0, len(phone_number)):  # For initial run
@@ -87,7 +88,7 @@ class WhatsAppPage(BasePage):
             try:
                 self.click(self.locator.search)
                 # sleep(self.data.point_five)
-                self.send_data(f'{self.wdata.country_code_BD}{int(phone_number[i])}',
+                self.send_data(f'{self.wdata.country_code_BD}{int(phone_number[i][2:])}',
                                self.locator.search_input)  # For initial run
                 # sleep(self.data.point_five)
                 self.driver.hide_keyboard()
@@ -142,8 +143,8 @@ class WhatsAppPage(BasePage):
         # self.write_res_to_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability, result) # local excel pandas
 
     def send_message_based_on_availability(self):
-        # available_phone_number = self.get_wa_available_phone_number_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability)
-        available_phone_number = self.get_wa_available_phone_number_gsheet(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1, 2, 'TRUE')
+        available_phone_number = self.get_wa_available_phone_number_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability)
+        # available_phone_number = self.get_wa_available_phone_number_gsheet(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1, 2, 'TRUE')
         print(available_phone_number)
         print(len(available_phone_number))
         for i in range(0, len(available_phone_number)):

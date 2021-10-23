@@ -34,7 +34,6 @@ class SkypePage(BasePage):
             self.click(self.locator.post_message)
             self.click(self.locator.back_from_chat)
 
-            
     # def extract_group_contact(self):
     #     sleep(self.data.five_seconds)
     #     profile_name = []
