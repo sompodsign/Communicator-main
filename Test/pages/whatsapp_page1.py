@@ -20,15 +20,22 @@ class WhatsAppPage(BasePage):
 
     def read_excel_for_availability(self, file, sheet):
         df = read_excel_sheet_by_sheet_name_pandas_without_header(file, sheet)
-        df = df.loc[:, 0]
+        df = df.loc[1:, 0]
         phone_number = df.values.tolist()
         return phone_number
 
     def write_res_to_excel(self, file, sheet, data):
+
         df = read_excel_sheet_by_sheet_name_pandas_without_header(file, sheet)
+        print('inside excel writing method')
         # df[len(df.columns)+1] = data
-        df = pd.concat([df, pd.DataFrame(data)], axis=1)
-        df.to_excel(excel_writer=file, sheet_name=sheet, index=False, header=None)
+        try:
+            df = pd.concat([df, pd.DataFrame(data)], axis=1)
+            print(df)
+
+            df.to_excel(excel_writer=file, sheet_name=sheet, index=False, header=None)
+        except Exception as e:
+            print(e)
 
     def read_number_from_gspread(self, gsheet, sheet_name, column_num):
         client = get_authorized_client(json_file)
@@ -78,16 +85,16 @@ class WhatsAppPage(BasePage):
         return available_phone_number
 
     def whatsapp_number_finder(self):
-        # phone_number = self.read_excel_for_availability(self.wdata.file_for_availability, self.wdata.sheet_for_availability) # local
-        phone_number = self.read_number_from_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1)  # gsheet
-        # print(phone_number)
+        phone_number = self.read_excel_for_availability(self.wdata.file_for_availability, self.wdata.sheet_for_availability) # local
+        # phone_number = self.read_number_from_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1)  # gsheet
         result = ''
         for i in range(0, len(phone_number)):  # For initial run
+            # print(phone_number[i][2:])
             # for i in range(10275, 20000):          # For specific range
             try:
                 self.click(self.locator.search)
                 # sleep(self.data.point_five)
-                self.send_data(f'{self.wdata.country_code_BD}{int(phone_number[i])}',
+                self.send_data(f'{self.wdata.country_code_BD}{int(phone_number[i][2:])}',
                                self.locator.search_input)  # For initial run
                 # sleep(self.data.point_five)
                 self.driver.hide_keyboard()
@@ -100,8 +107,10 @@ class WhatsAppPage(BasePage):
                     result = 'False'
                 self.go_back()
                 # sleep(self.data.point_five)
-                self.write_result_on_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, i + 1, 2,
-                                             result)  # For initial run
+                print(result)
+                self.write_res_to_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability, result)
+                # self.write_result_on_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, i + 1, 2,
+                #                              result)  # For initial run
             except:
                 continue
         # writesinglecol(self.wdata.file_for_availability, self.wdata.sheet_for_availability, 1, 2, i + 1, result)

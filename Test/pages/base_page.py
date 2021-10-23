@@ -11,10 +11,10 @@ class BasePage(object):
     def __init__(self, driver, base_url="about:blank"):
         self.base_url = base_url
         self.driver = driver
-        self.timeout = 30
+        # self.timeout = 30
 
     def click(self, locator):
-        self.driver.implicitly_wait(1)
+        # self.driver.implicitly_wait(1)
         # sleep(1)
         self.driver.find_element_by_xpath(locator).click()
 
@@ -22,7 +22,7 @@ class BasePage(object):
         self.driver.find_element_by_xpath(locator).clear()
 
     def send_data(self, data, locator):
-        self.driver.implicitly_wait(1)
+        # self.driver.implicitly_wait(1)
         # sleep(1)
         self.driver.find_element_by_xpath(locator).send_keys(data)
 
@@ -35,7 +35,7 @@ class BasePage(object):
         return val
 
     def go_back(self):
-        self.driver.implicitly_wait(1)
+        # self.driver.implicitly_wait(1)
         self.driver.back()
         # sleep(1)
 
