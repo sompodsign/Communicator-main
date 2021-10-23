@@ -2,7 +2,7 @@ from pages.base_page import BasePage
 from data.locators import GChatPageLocator
 from data.data import *
 from utils.readUserData import email, message, seenOldBound, room
-from utils.excel_utils import *
+from utils.excelUtils import *
 from time import sleep
 import re
 
