@@ -1,10 +1,10 @@
 # from utils.excel_utils import *
-from data.data import *
+# from data.data import *
 import ast
 import pandas as pd
+from pathlib import Path
 
 wa_file = Path(__file__).parent.parent / 'data/phone_data/20k.xlsx'
-
 
 # Gchat
 # maxRow = getRowCount(user_data, gchat)
@@ -37,12 +37,18 @@ wa_file = Path(__file__).parent.parent / 'data/phone_data/20k.xlsx'
 # print(len(phone))
 # # print(whatsAppGroup)
 # print(whatsAppGroupMessage)
+print(wa_file)
+
+
 def get_active_numbers(messenger, file):
     dataframe = pd.read_excel(file)
-    numbers = dataframe.loc[dataframe[messenger] == "True", ["Mobile Numbers"]]['Mobile Numbers'].to_list()
+    # print(dataframe)
+    numbers = dataframe.loc[dataframe["Whatsapp"] == 1, ["Mobile_Numbers"]]["Mobile_Numbers"].to_list()
     return [int(number[2:]) for number in numbers]
 
 
+#
+get_active_numbers("Whatsapp", wa_file)
 phone = get_active_numbers("Whatsapp", wa_file)
 print(phone)
 # skype

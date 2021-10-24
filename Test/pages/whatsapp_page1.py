@@ -8,7 +8,7 @@ from time import sleep
 from utils.excel_utils_pandas import *
 # from utils.excelUtils import *
 from utils.gspread_utils import *
-
+import pandas as pd
 
 class WhatsAppPage(BasePage):
 
@@ -20,6 +20,7 @@ class WhatsAppPage(BasePage):
 
     def read_excel_for_availability(self, file, sheet):
         df = read_excel_sheet_by_sheet_name_pandas_without_header(file, sheet)
+        # df = pd.read_excel()
         df = df.loc[1:, 0]
         phone_number = df.values.tolist()
         return phone_number
@@ -82,7 +83,7 @@ class WhatsAppPage(BasePage):
         phone_number = self.read_excel_for_availability(self.wdata.file_for_availability,
                                                         self.wdata.sheet_for_availability)  # local
         # phone_number = self.read_number_from_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, 1)  # gsheet
-        result = ''
+        result = None
         for i in range(0, len(phone_number)):  # For initial run
             # print(phone_number[i][2:])
             # for i in range(10275, 20000):          # For specific range
@@ -97,9 +98,9 @@ class WhatsAppPage(BasePage):
                 try:
                     res = self.is_element_displayed(self.locator.chat_person)
                     if res is True:
-                        result = 'True'
+                        result = 1
                 except Exception as e:
-                    result = 'False'
+                    result = 0
                 self.go_back()
                 # sleep(self.data.point_five)
                 self.write_res_to_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability, result, i+1)
