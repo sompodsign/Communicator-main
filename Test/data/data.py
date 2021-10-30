@@ -17,6 +17,9 @@ user_data_whatsapp = Path(__file__).parent / "data.xlsx"
 whats_app_sheet_name = 'S1'
 
 
+# Email availability
+email_file = Path(__file__).parent / "emails.xlsx"
+
 class Whatsapp(object):
     gsheet_name = 'airtel 0168...'
     gsheet_worksheet = 'Sheet1'

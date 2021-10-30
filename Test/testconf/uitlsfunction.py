@@ -56,7 +56,7 @@ def sendmail(senderemail, senderpassword, receiversemail, mailsubject, mailbody,
         server.login(senderemail, senderpassword)
         server.send_message(message)
         # server.sendmail(senderemail, receivers, message.as_string())
-        print("Send email successfully!!!")
+        print("Send email_sending successfully!!!")
         server.close()
     except smtplib.SMTPException:
         print("Failed to send mail!!!")

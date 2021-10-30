@@ -8,7 +8,7 @@ wa_file = Path(__file__).parent.parent / 'data/phone_data/20k.xlsx'
 
 # Gchat
 # maxRow = getRowCount(user_data, gchat)
-# email = remove_items(readsinglecol(user_data, gchat, 2, maxRow, 1), None)
+# email_sending = remove_items(readsinglecol(user_data, gchat, 2, maxRow, 1), None)
 # userName = remove_items(readsinglecol(user_data, gchat, 2, maxRow, 2), None)
 # seenOldBound = remove_items(readsinglecol(user_data, gchat, 2, maxRow, 4), None)
 # seenOldBound = [i.strip('][').split(', ') for i in seenOldBound]
@@ -19,7 +19,7 @@ wa_file = Path(__file__).parent.parent / 'data/phone_data/20k.xlsx'
 # maxRow = getRowCount(user_data, time_message)
 # time = remove_items(readsinglecol(user_data, time_message, 2, maxRow, 1), None)
 # message = remove_items(readsinglecol(user_data, time_message, 2, maxRow, 2), None)
-# print(email)
+# print(email_sending)
 # print(userName)
 # print(room)
 # print(time)

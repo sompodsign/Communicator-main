@@ -10,6 +10,7 @@ from utils.excel_utils_pandas import *
 from utils.gspread_utils import *
 import pandas as pd
 
+
 class WhatsAppPage(BasePage):
 
     def __init__(self, driver):
@@ -103,7 +104,8 @@ class WhatsAppPage(BasePage):
                     result = 0
                 self.go_back()
                 # sleep(self.data.point_five)
-                self.write_res_to_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability, result, i+1)
+                self.write_res_to_excel(self.wdata.file_for_availability, self.wdata.sheet_for_availability, result,
+                                        i + 1)
                 # self.write_result_on_gspread(self.wdata.gsheet_name, self.wdata.gsheet_worksheet, i + 1, 2,
                 #                              result)  # For initial run
             except:

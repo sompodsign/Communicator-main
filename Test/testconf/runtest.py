@@ -12,7 +12,7 @@ command = f"pytest -s --alluredir=ReportAllure/{reportFolderName} --html=ReportH
 # command = f"pytest -s testcase/gchat"
 os.system(command)
 
-#  Send email
+#  Send email_sending
 # sender = ''
 # password = ''
 # receivers = ''
