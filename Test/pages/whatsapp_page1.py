@@ -1,4 +1,5 @@
 # import base64
+import time
 
 from pages.base_page import BasePage
 from data.locators import WhatsappPageLocator
@@ -9,6 +10,17 @@ from utils.excel_utils_pandas import *
 # from utils.excelUtils import *
 from utils.gspread_utils import *
 import pandas as pd
+from appium.webdriver.common.touch_action import TouchAction
+
+
+def write_available_wa_numbers_to_excel(collection):
+    """
+    Writes collection of contacts to excel sheet
+    :param collection:
+    :return: Excel file
+    """
+    df = pd.DataFrame(collection, columns=['Whatsapp Available'])
+    df.to_excel('wapp_numbers_available')
 
 
 class WhatsAppPage(BasePage):
@@ -17,6 +29,7 @@ class WhatsAppPage(BasePage):
         self.locator = WhatsappPageLocator
         self.data = Data
         self.wdata = Whatsapp
+        self.available_numbers = []
         super().__init__(driver)
 
     def read_excel_for_availability(self, file, sheet):
@@ -197,3 +210,42 @@ class WhatsAppPage(BasePage):
                 sleep(self.data.point_five)
             except Exception as e:
                 print(e)
+
+    """
+    Functions updated by Shampad
+    """
+
+    def is_contacts_loading(self):
+        """
+        Returns boolean according to progress bar
+        :return:
+        """
+        loader = self.is_element_displayed_by_id(self.locator.progress_bar)
+        return True if loader else False
+
+    def tap_on_chat_btn(self):
+        """ Taps on main chat button on home screen"""
+        self.click_by_id(self.locator.show_chat)
+
+    def contacts_available_count(self):
+        """ returns count of available contacts on Select Contact screen """
+        count_element = self.find_element(self.locator.contacts_amount)
+        return count_element.text
+
+    def collect_available_contacts(self):
+        """
+        Collects all available contacts on Whatsapp
+        and write on excel sheet.
+        :return: Excel file
+        """
+        self.tap_on_chat_btn()
+        time.sleep(2)
+        contact_count = self.contacts_available_count().split()[0]
+        for i in range(int(contact_count) // 9):
+            self.driver.swipe(609, 1669, 511, 113, 1500)
+            contact_elems = self.driver.find_elements_by_id('com.whatsapp:id/contactpicker_row_name')
+            available_contacts = [contact.text for contact in contact_elems]
+            for contact in available_contacts:
+                self.available_numbers.append(contact)
+                print(contact)
+        write_available_wa_numbers_to_excel(list(set(self.available_numbers)[:2]))

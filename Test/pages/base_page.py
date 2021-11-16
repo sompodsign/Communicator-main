@@ -18,6 +18,9 @@ class BasePage(object):
         # sleep(1)
         self.driver.find_element_by_xpath(locator).click()
 
+    def click_by_id(self, locator):
+        self.driver.find_element_by_id(locator).click()
+
     def clear_data(self, locator):
         self.driver.find_element_by_xpath(locator).clear()
 
@@ -28,6 +31,10 @@ class BasePage(object):
 
     def is_element_displayed(self, locator):
         val = self.driver.find_element_by_xpath(locator).is_displayed()
+        return val
+
+    def is_element_displayed_by_id(self, locator):
+        val = self.driver.find_element_by_id(locator).is_displayed()
         return val
 
     def get_attribute_value(self, attributeName, locator):

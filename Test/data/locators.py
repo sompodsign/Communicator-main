@@ -88,6 +88,10 @@ class WhatsappPageLocator(object):
     message_contact = '//android.widget.TextView[contains(@text,"Message ")]'
     view_contact = '//android.widget.TextView[contains(@text,"View ")]'
     contact_number = '//android.widget.TextView[@resource-id="com.whatsapp:id/title_tv"]'
+    show_chat = 'com.whatsapp:id/fab'
+    # available_contact = 'com.whatsapp:id/contactpicker_row_name'
+    progress_bar = 'com.whatsapp:id/progress_bar'
+    contacts_amount = '//android.widget.TextView[contains(@text,"contacts")]'
 
 
 # Skype
