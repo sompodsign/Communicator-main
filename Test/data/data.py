@@ -78,7 +78,9 @@ class Data(object):
     whatsapp_app_activity_reg = 'com.whatsapp.registration.EULA'
     imo_app_package = 'com.imo.android.imoim'
     imo_app_activity = 'com.imo.android.imoim.activities.Home'
-
+    messages_app_package = 'com.google.android.apps.messaging'
+    messages_app_home_activity = 'com.google.android.apps.messaging.home.HomeActivity'
+    messages_app_messaging_activity = 'com.google.android.apps.messaging'
     # Current apk
     current_apk_path = whatsapp
     current_app_package = whatsapp_app_package

@@ -196,3 +196,11 @@ class ViberPageLocator(object):
     post_message = '//android.widget.FrameLayout[@resource-id="com.viber.voip:id/btn_send"]'
 
     img_attachment = '//android.widget.ImageView[@resource-id="com.viber.voip:id/options_menu_open_gallery"]'
+
+
+# SMS
+class MessagesLocator:
+    new_message_btn = 'com.google.android.apps.messaging:id/start_chat_fab'
+    to_field = 'com.google.android.apps.messaging:id/recipient_text_view'
+    message_field = 'com.google.android.apps.messaging:id/compose_message_text'
+    send_button = 'com.google.android.apps.messaging:id/send_message_button_icon'

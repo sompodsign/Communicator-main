@@ -1,6 +1,8 @@
 from time import sleep
-
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
 # from selenium.webdriver.common.action_chains import ActionChains
 # from appium.webdriver.common.touch_action import TouchAction
 # from appium.webdriver.common.multi_action import MultiAction
@@ -12,6 +14,13 @@ class BasePage(object):
         self.base_url = base_url
         self.driver = driver
         # self.timeout = 30
+
+    def wait_element(self, locator):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, locator)))
+        except TimeoutException:
+            print("ELEMENT NOT FOUND WITHIN GIVEN TIME!")
+            self.driver.quit()
 
     def click(self, locator):
         # self.driver.implicitly_wait(1)
@@ -29,6 +38,10 @@ class BasePage(object):
         # sleep(1)
         self.driver.find_element_by_xpath(locator).set_value(data)
 
+    def send_data_by_id(self, data, locator):
+        self.wait_element(locator)
+        self.driver.find_element_by_id(locator).set_value(data)
+
     def is_element_displayed(self, locator):
         val = self.driver.find_element_by_xpath(locator).is_displayed()
         return val
@@ -45,6 +58,9 @@ class BasePage(object):
         # self.driver.implicitly_wait(1)
         self.driver.back()
         # sleep(1)
+
+    def keyboard_keycode_press(self, code):
+        self.driver.press_keycode(code)
 
     def find_element(self, locator):
         return self.driver.find_element_by_xpath(locator)
