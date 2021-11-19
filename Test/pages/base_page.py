@@ -28,6 +28,7 @@ class BasePage(object):
         self.driver.find_element_by_xpath(locator).click()
 
     def click_by_id(self, locator):
+        self.wait_element(locator)
         self.driver.find_element_by_id(locator).click()
 
     def clear_data(self, locator):

@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from utils.csv_utils import read_csv_without_header
 
 # User file
 
@@ -16,9 +17,9 @@ google_messages_sheet = 'GoogleMessages'
 user_data_whatsapp = Path(__file__).parent / "data.xlsx"
 whats_app_sheet_name = 'S1'
 
-
 # Email availability
 email_file = Path(__file__).parent / "emails.xlsx"
+
 
 class Whatsapp(object):
     gsheet_name = 'airtel 0168...'
@@ -37,6 +38,13 @@ class Whatsapp(object):
     # message = 'ঘরে বসেই ডাক্তারি পরামর্শ '
     # message = 'সর্বোচ্চ মানের চিকিৎসা সেবা পেতে  ihealthcare bd আপনার পাশে। \n\n ৭০% ছাড়, \n পেতে নিচের লিঙ্কটি ক্লিক করুন। \n\n https://forms.gle/MkSBEHBEANpTqR1h8 \n\n বিস্তারিত জানতে - আজই যোগাযোগ করুন \n ihealthcare bd তে \n\n মোবাইলঃ০১৭১০৬৫১২৮৯ \n 📧hello@ihealthcare.com \n'
     # message = 'সর্বোচ্চ মানের চিকিৎসা সেবা পেতে  ihealthcare আপনার পাশে। \n\n৫০% ছাড়ে,\nআপনি ও আপনার পরিবার পেতে পারেন,\nপুরো ৩০দিনের চিকিৎসা সেবা।\n\nঅফারটি পেতে নিচের লিঙ্কটি ক্লিক করুন। \n\n🔗 https://forms.gle/MkSBEHBEANpTqR1h8\n\n\n📲 https://www.facebook.com/ihealthcare.global\n\nবিস্তারিত জানতে - আজই যোগাযোগ করুন\nihealthcare তে \n\nমোবাইলঃ ০১৭১০৬৫১২৮৯ \n📧ihealthcare.bd@gmail.com\n'
+
+
+class Sms:
+    """ All information for SMS service"""
+    sheet_name = 'Mobile'
+    file_path = Path(__file__).parent / 'sms_numbers/mobile_numbers1.csv'
+    message = read_csv_without_header(file_name=file_path)['Message'].values[0]
 
 
 class Imo(object):
