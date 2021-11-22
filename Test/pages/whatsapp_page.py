@@ -21,22 +21,19 @@ class WhatsAppPage(BasePage):
             self.send_data(phone[i], self.locator.search_input)
             self.driver.hide_keyboard()
             # try:
-            sleep(2)
-            # self.driver.press_keycode(66)
             self.click(self.locator.chat_person)
-
             sleep(1)
             self.send_data("Welcome to QUPS.......by Mahin", self.locator.chat_message)
-            # sleep(1)
+            sleep(1)
             self.click(self.locator.post_message)
             print(i)
             self.go_back()
             # except Exception as e:
             #     a = e
-            print('>>>>>>>', i)
-            self.go_back()
-            not_send.append(i)
-        # print(not_send)
+            # print('>>>>>>>', i)
+            # self.go_back()
+            # not_send.append(i)
+            # print(not_send)
 
     # def send_group_message(self):
     #     sleep(self.data.five_seconds)
