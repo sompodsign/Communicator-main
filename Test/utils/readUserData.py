@@ -43,8 +43,9 @@ print(wa_file)
 def get_active_numbers(messenger, file):
     dataframe = pd.read_excel(file)
     # print(dataframe)
-    numbers = dataframe.loc[dataframe["Whatsapp"] == 1, ["Mobile_Numbers"]]["Mobile_Numbers"].to_list()
-    return [int(number[2:]) for number in numbers]
+    # numbers = dataframe.loc[dataframe["Whatsapp"] == 1, ["Mobile_Numbers"]]["Mobile_Numbers"].to_list()
+    numbers = dataframe['Mobile Numbers'].to_list()
+    return numbers
 
 
 #

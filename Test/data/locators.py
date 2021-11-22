@@ -42,6 +42,7 @@ class WhatsappPageLocator(object):
     # search_input1 = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/search_input_layout"]'
     # chat_person = '//android.widget.RelativeLayout[@resource-id="com.whatsapp:id/contact_row_container"]'
     chat_person = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout'
+    # chat_person = 'com.whatsapp:id/contact_photo'
     # chat_person = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/conversations_row_header"]'
     # chat_person = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/conversations_row_content"]'
 

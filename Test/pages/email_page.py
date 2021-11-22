@@ -30,8 +30,8 @@ def write_res_to_excel(file, sheet, data, row):
 
 class EmailPage:
     sent_from = 'sooompod@gmail.com'
-    subject = 'OMG Super Important Message'
-    body = 'Hey, whats up?'
+    subject = 'Test'
+    body = 'Test message by Mahin'
 
     def send_mail(self):
         """sends dynamic email to addresses one by one and write status in excel sheet"""

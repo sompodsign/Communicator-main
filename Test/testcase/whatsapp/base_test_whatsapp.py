@@ -29,8 +29,8 @@ class BaseTest(unittest.TestCase):
                 # 'autoGrantPermissions': True,
             })
 
-    def tearDown(self):
-        self.driver.quit()
+    # def tearDown(self):
+    #     self.driver.quit()
 
 
 class TestCase(object):
