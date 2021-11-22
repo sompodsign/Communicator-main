@@ -41,12 +41,14 @@ class WhatsappPageLocator(object):
     search_input = '//android.widget.EditText[@resource-id="com.whatsapp:id/search_input"]'
     # search_input1 = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/search_input_layout"]'
     # chat_person = '//android.widget.RelativeLayout[@resource-id="com.whatsapp:id/contact_row_container"]'
-    chat_person = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout'
-    # chat_person = 'com.whatsapp:id/contact_photo'
+    # chat_person = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.RelativeLayout'
+    # chat_person = 'com.whatsapp:id/contactpicker_text_container'
+    # chat_person = '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.ListView/android.widget.RelativeLayout/android.widget.LinearLayout'
     # chat_person = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/conversations_row_header"]'
     # chat_person = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/conversations_row_content"]'
+    # chat_person = '//android.widget.LinearLayout[@resource-id="com.whatsapp:id/conversations_row_content"]'
 
-    # chat_person = '//androidx.recyclerview.widget.RecyclerView'
+    chat_person = "//*[@resource-id='com.whatsapp:id/contact_row_container' and @bounds='[0,207][1080,407]']"
 
     select_multiple_chat_person = '//android.widget.TextView[@resource-id="com.whatsapp:id/conversations_row_contact_name"]'
     select_multiple_chat_person1 = '//android.widget.FrameLayout[@resource-id="com.whatsapp:id/contact_selector"]'

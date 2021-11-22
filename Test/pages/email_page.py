@@ -29,7 +29,7 @@ def write_res_to_excel(file, sheet, data, row):
 
 
 class EmailPage:
-    sent_from = 'sooompod@gmail.com'
+    sent_from = ''
     subject = 'Test'
     body = 'Test message by Mahin'
 
@@ -43,7 +43,7 @@ class EmailPage:
             server = SMTP('smtp.gmail.com', 587)
             server.ehlo()
             server.starttls()
-            server.login(self.sent_from, '5946644S')
+            server.login(self.sent_from, '')
             for i in range(0, len(emails)):
                 print(i, emails[i])
                 if validate_email(emails[i]):

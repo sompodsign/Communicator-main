@@ -22,7 +22,9 @@ class WhatsAppPage(BasePage):
             self.driver.hide_keyboard()
             # try:
             sleep(2)
+            # self.driver.press_keycode(66)
             self.click(self.locator.chat_person)
+
             sleep(1)
             self.send_data("Welcome to QUPS.......by Mahin", self.locator.chat_message)
             # sleep(1)

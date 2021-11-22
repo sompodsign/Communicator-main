@@ -11,10 +11,10 @@ class BaseTest(unittest.TestCase):
             command_executor='http://127.0.0.1:4723/wd/hub',
             desired_capabilities={
                 'platformName': 'Android',
-                'deviceName': 'emulator-5554',
+                # 'deviceName': 'emulator-5554',
                 # 'deviceName': '33001b3c1fc1556d',
-                # 'platformVersion': '11',
-                # 'deviceName': '5c26e74d',
+                'platformVersion': '10',
+                'deviceName': '95fdd773',
                 'automationName': 'uiautomator2',
                 'newCommandTimeout': '240',
                 'appPackage': self.data.whatsapp_app_package,
